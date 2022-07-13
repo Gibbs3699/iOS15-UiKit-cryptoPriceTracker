@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		DCADC8F5287EC54000C496DD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DCADC8F4287EC54000C496DD /* Alamofire */; };
 		DCADC8F7287ECB9800C496DD /* CryptoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADC8F6287ECB9800C496DD /* CryptoTableViewCell.swift */; };
+		DCADC8F9287F18D800C496DD /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADC8F8287F18D700C496DD /* Crypto.swift */; };
 		DCE35CB8287C855100D8D256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE35CB7287C855100D8D256 /* AppDelegate.swift */; };
 		DCE35CBA287C855100D8D256 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE35CB9287C855100D8D256 /* SceneDelegate.swift */; };
 		DCE35CC1287C855400D8D256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE35CC0287C855400D8D256 /* Assets.xcassets */; };
@@ -19,6 +20,7 @@
 
 /* Begin PBXFileReference section */
 		DCADC8F6287ECB9800C496DD /* CryptoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTableViewCell.swift; sourceTree = "<group>"; };
+		DCADC8F8287F18D700C496DD /* Crypto.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Crypto.swift; sourceTree = "<group>"; };
 		DCE35CB4287C855100D8D256 /* Crypto Price Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto Price Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE35CB7287C855100D8D256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCE35CB9287C855100D8D256 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -65,6 +67,7 @@
 				DCE35CCB287D4F1100D8D256 /* CryptoViewController.swift */,
 				DCADC8F6287ECB9800C496DD /* CryptoTableViewCell.swift */,
 				DCE35CCD287D521800D8D256 /* APICaller.swift */,
+				DCADC8F8287F18D700C496DD /* Crypto.swift */,
 				DCE35CC0287C855400D8D256 /* Assets.xcassets */,
 				DCE35CC2287C855400D8D256 /* LaunchScreen.storyboard */,
 				DCE35CC5287C855400D8D256 /* Info.plist */,
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCADC8F9287F18D800C496DD /* Crypto.swift in Sources */,
 				DCE35CCE287D521800D8D256 /* APICaller.swift in Sources */,
 				DCE35CCC287D4F1100D8D256 /* CryptoViewController.swift in Sources */,
 				DCE35CB8287C855100D8D256 /* AppDelegate.swift in Sources */,

@@ -28,7 +28,14 @@ class CryptoViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        APICaller.shared.getAllCryptoData()
+        APICaller.shared.getAllCryptoData { result in
+            switch result {
+            case .success(let models):
+                print(models[0])
+            case .failure(let error):
+                print("Error: \(error)")
+            }
+        }
     }
     
     override func viewDidLayoutSubviews() {
