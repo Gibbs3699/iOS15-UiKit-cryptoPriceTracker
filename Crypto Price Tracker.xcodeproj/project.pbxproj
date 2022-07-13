@@ -7,23 +7,26 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		DCADC8F5287EC54000C496DD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DCADC8F4287EC54000C496DD /* Alamofire */; };
+		DCADC8F7287ECB9800C496DD /* CryptoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADC8F6287ECB9800C496DD /* CryptoTableViewCell.swift */; };
 		DCE35CB8287C855100D8D256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE35CB7287C855100D8D256 /* AppDelegate.swift */; };
 		DCE35CBA287C855100D8D256 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE35CB9287C855100D8D256 /* SceneDelegate.swift */; };
-		DCE35CBC287C855100D8D256 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE35CBB287C855100D8D256 /* ViewController.swift */; };
-		DCE35CBF287C855100D8D256 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE35CBD287C855100D8D256 /* Main.storyboard */; };
 		DCE35CC1287C855400D8D256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE35CC0287C855400D8D256 /* Assets.xcassets */; };
 		DCE35CC4287C855400D8D256 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DCE35CC2287C855400D8D256 /* LaunchScreen.storyboard */; };
+		DCE35CCC287D4F1100D8D256 /* CryptoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE35CCB287D4F1100D8D256 /* CryptoViewController.swift */; };
+		DCE35CCE287D521800D8D256 /* APICaller.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE35CCD287D521800D8D256 /* APICaller.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		DCADC8F6287ECB9800C496DD /* CryptoTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoTableViewCell.swift; sourceTree = "<group>"; };
 		DCE35CB4287C855100D8D256 /* Crypto Price Tracker.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Crypto Price Tracker.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		DCE35CB7287C855100D8D256 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DCE35CB9287C855100D8D256 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		DCE35CBB287C855100D8D256 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		DCE35CBE287C855100D8D256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		DCE35CC0287C855400D8D256 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		DCE35CC3287C855400D8D256 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DCE35CC5287C855400D8D256 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		DCE35CCB287D4F1100D8D256 /* CryptoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CryptoViewController.swift; sourceTree = "<group>"; };
+		DCE35CCD287D521800D8D256 /* APICaller.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = APICaller.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -31,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				DCADC8F5287EC54000C496DD /* Alamofire in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -58,8 +62,9 @@
 			children = (
 				DCE35CB7287C855100D8D256 /* AppDelegate.swift */,
 				DCE35CB9287C855100D8D256 /* SceneDelegate.swift */,
-				DCE35CBB287C855100D8D256 /* ViewController.swift */,
-				DCE35CBD287C855100D8D256 /* Main.storyboard */,
+				DCE35CCB287D4F1100D8D256 /* CryptoViewController.swift */,
+				DCADC8F6287ECB9800C496DD /* CryptoTableViewCell.swift */,
+				DCE35CCD287D521800D8D256 /* APICaller.swift */,
 				DCE35CC0287C855400D8D256 /* Assets.xcassets */,
 				DCE35CC2287C855400D8D256 /* LaunchScreen.storyboard */,
 				DCE35CC5287C855400D8D256 /* Info.plist */,
@@ -83,6 +88,9 @@
 			dependencies = (
 			);
 			name = "Crypto Price Tracker";
+			packageProductDependencies = (
+				DCADC8F4287EC54000C496DD /* Alamofire */,
+			);
 			productName = "Crypto Price Tracker";
 			productReference = DCE35CB4287C855100D8D256 /* Crypto Price Tracker.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,9 @@
 				Base,
 			);
 			mainGroup = DCE35CAB287C855100D8D256;
+			packageReferences = (
+				DCADC8F3287EC54000C496DD /* XCRemoteSwiftPackageReference "Alamofire" */,
+			);
 			productRefGroup = DCE35CB5287C855100D8D256 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -127,7 +138,6 @@
 			files = (
 				DCE35CC4287C855400D8D256 /* LaunchScreen.storyboard in Resources */,
 				DCE35CC1287C855400D8D256 /* Assets.xcassets in Resources */,
-				DCE35CBF287C855100D8D256 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -138,8 +148,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				DCE35CBC287C855100D8D256 /* ViewController.swift in Sources */,
+				DCE35CCE287D521800D8D256 /* APICaller.swift in Sources */,
+				DCE35CCC287D4F1100D8D256 /* CryptoViewController.swift in Sources */,
 				DCE35CB8287C855100D8D256 /* AppDelegate.swift in Sources */,
+				DCADC8F7287ECB9800C496DD /* CryptoTableViewCell.swift in Sources */,
 				DCE35CBA287C855100D8D256 /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -147,14 +159,6 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin PBXVariantGroup section */
-		DCE35CBD287C855100D8D256 /* Main.storyboard */ = {
-			isa = PBXVariantGroup;
-			children = (
-				DCE35CBE287C855100D8D256 /* Base */,
-			);
-			name = Main.storyboard;
-			sourceTree = "<group>";
-		};
 		DCE35CC2287C855400D8D256 /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -294,7 +298,6 @@
 				INFOPLIST_FILE = "Crypto Price Tracker/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -322,7 +325,6 @@
 				INFOPLIST_FILE = "Crypto Price Tracker/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
-				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				LD_RUNPATH_SEARCH_PATHS = (
@@ -360,6 +362,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		DCADC8F3287EC54000C496DD /* XCRemoteSwiftPackageReference "Alamofire" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/Alamofire.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		DCADC8F4287EC54000C496DD /* Alamofire */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCADC8F3287EC54000C496DD /* XCRemoteSwiftPackageReference "Alamofire" */;
+			productName = Alamofire;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = DCE35CAC287C855100D8D256 /* Project object */;
 }
