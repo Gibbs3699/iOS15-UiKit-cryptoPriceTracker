@@ -7,19 +7,69 @@
 
 import UIKit
 
+struct CryptoTableViewCellViewModel {
+    let name: String
+    let symbol: String
+    let price: String
+}
+
+
 class CryptoTableViewCell: UITableViewCell {
 
     static let identifier = "CryptoTableViewCell"
     
-    override func awakeFromNib() {
-        super.awakeFromNib()
-        // Initialization code
+    let nameLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 20, weight: .bold)
+        return label
+    }()
+    
+    let symbolLabel: UILabel = {
+        let label = UILabel()
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        return label
+    }()
+    
+    let priceLabel: UILabel = {
+        let label = UILabel()
+        label.textColor = .systemGreen
+        label.textAlignment = .right
+        label.font = .systemFont(ofSize: 16, weight: .regular)
+        return label
+    }()
+    
+    override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
+        super.init(style: style, reuseIdentifier: reuseIdentifier)
+        
+        contentView.addSubview(nameLabel)
+        contentView.addSubview(symbolLabel)
+        contentView.addSubview(priceLabel)
+        
     }
-
-    override func setSelected(_ selected: Bool, animated: Bool) {
-        super.setSelected(selected, animated: animated)
-
-        // Configure the view for the selected state
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        nameLabel.sizeToFit()
+        symbolLabel.sizeToFit()
+        priceLabel.sizeToFit()
+        
+        nameLabel.frame = CGRect(x: 20, y: 0, width: contentView.frame.size.width/2, height: contentView.frame.size.height/2)
+        
+        symbolLabel.frame = CGRect(x: 20, y: contentView.frame.size.height/2 , width: contentView.frame.size.width/2, height: contentView.frame.size.height/2)
+        
+        priceLabel.frame = CGRect(x: contentView.frame.size.width/2, y: 0, width: contentView.frame.size.width/2-20, height: contentView.frame.size.height)
+        
+    }
+    
+    func configure(with viewModel: CryptoTableViewCellViewModel) {
+        nameLabel.text = viewModel.name
+        symbolLabel.text = viewModel.symbol
+        priceLabel.text = viewModel.price
     }
 
 }

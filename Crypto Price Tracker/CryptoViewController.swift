@@ -8,19 +8,32 @@
 import UIKit
 
 class CryptoViewController: UIViewController {
-
+    
+    private var viewModels = [CryptoTableViewCellViewModel]()
+    
+    static let numberFormatter: NumberFormatter = {
+        let formatter = NumberFormatter()
+        formatter.locale = .current
+        formatter.allowsFloats = true
+        formatter.numberStyle = .currency
+        formatter.formatterBehavior = .default
+        return formatter
+    }()
+    
     let tableView: UITableView = {
         let tableView = UITableView(frame: .zero, style: .grouped)
         tableView.register(CryptoTableViewCell.self, forCellReuseIdentifier: CryptoTableViewCell.identifier)
         return tableView
         
     }()
+
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         view.backgroundColor = .green
         
-        title = "Crypto"
+        title = "Crypto Price Tracker"
         navigationController?.navigationBar.prefersLargeTitles = true
         
         view.addSubview(tableView)
@@ -28,10 +41,21 @@ class CryptoViewController: UIViewController {
         tableView.delegate = self
         tableView.dataSource = self
         
-        APICaller.shared.getAllCryptoData { result in
+        APICaller.shared.getAllCryptoData { [weak self] result in
             switch result {
             case .success(let models):
-                print(models[0])
+                self?.viewModels = models.compactMap({
+                    let price = $0.price_usd ?? 0
+                    let formatter = CryptoViewController.numberFormatter
+                    let priceString = formatter.string(from: NSNumber(value: price))
+                    
+                    return CryptoTableViewCellViewModel(name: $0.name ?? "N/A", symbol: $0.asset_id ?? "N/A", price: priceString ?? "N/A")
+                })
+                
+                DispatchQueue.main.async {
+                    self?.tableView.reloadData()
+                }
+                
             case .failure(let error):
                 print("Error: \(error)")
             }
@@ -48,7 +72,7 @@ class CryptoViewController: UIViewController {
 extension CryptoViewController: UITableViewDelegate, UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        return viewModels.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -56,9 +80,13 @@ extension CryptoViewController: UITableViewDelegate, UITableViewDataSource {
             fatalError()
         }
         
-        cell.textLabel?.text = "dadads"
+        cell.configure(with: viewModels[indexPath.row])
         
         return cell
+    }
+    
+    func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
+        return 70
     }
     
 }
