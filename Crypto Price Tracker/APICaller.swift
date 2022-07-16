@@ -12,7 +12,6 @@ final class  APICaller {
     
     static let shared = APICaller()
     
-    private let decoder = JSONDecoder()
     public var icons: [Icon] = []
     private var whenReadyBlock: ((Result<[Crypto], Error>) -> Void)?
     
@@ -21,61 +20,39 @@ final class  APICaller {
         static let assetsURL = "https://rest.coinapi.io/v1/assets"
         static let iconURL = "https://rest.coinapi.io/v1/assets/icons/55"
     }
-
-    private init() { // init can only be called once (only one instance)
-        
-    }
     
     public func getAllCryptoData(completion: @escaping (Result<[Crypto], Error>) -> Void) {
-        AF.request(Constant.assetsURL + "?apiKey=" + Constant.apiKey).response { response in
+        AF.request(Constant.assetsURL + "?apiKey=" + Constant.apiKey).responseDecodable(of: [Crypto].self) { response  in
             
             guard !self.icons.isEmpty else {
                 self.whenReadyBlock = completion
                 return
             }
-                
-            if let error = response.error {
-                print("Handle Error Please: \(error)")
-            }
             
-            guard let data = response.data else {
-                print("no data")
-                return
-            }
-            
-            do {
-                let result = try self.decoder.decode([Crypto].self, from: data)
+            switch response.result {
+            case .success(let result):
                 completion(.success(result))
+            case .failure(let error):
+                print("Failed to decode, Handle Error here: \(error)")
             }
-            catch let decodeError {
-                print("Failed to decode, Handle Error here: \(decodeError)")
-            }
+
         }
         
     }
     
     public func getAllIcons() {
-        AF.request(Constant.iconURL + "?apiKey=" + Constant.apiKey).response { response in
-            
-            if let error = response.error {
-                print("Handle Error Please: \(error)")
-            }
-            
-            guard let data = response.data else {
-                print("no data")
-                return
-            }
-            
-            do {
-                self.icons = try self.decoder.decode([Icon].self, from: data)
-                if let completion = self.whenReadyBlock {
+        AF.request(Constant.iconURL + "?apiKey=" + Constant.apiKey).responseDecodable(of: [Icon].self) { [weak self] response in
+            switch response.result {
+            case .success(let result):
+                self?.icons = result
+                if let completion = self?.whenReadyBlock {
                     APICaller.shared.getAllCryptoData(completion: completion)
                 }
-    
+
+            case .failure(let error):
+                print("Failed to decode, Handle Error here: \(error)")
             }
-            catch let decodeError {
-                print("Failed to decode, Handle Error here: \(decodeError)")
-            }
+
         }
     }
 }
