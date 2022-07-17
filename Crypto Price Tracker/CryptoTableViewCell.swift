@@ -6,11 +6,13 @@
 //
 
 import UIKit
+import AlamofireImage
 
 struct CryptoTableViewCellViewModel {
     let name: String
     let symbol: String
     let price: String
+    let iconURL: URL?
 }
 
 
@@ -18,24 +20,31 @@ class CryptoTableViewCell: UITableViewCell {
 
     static let identifier = "CryptoTableViewCell"
     
-    let nameLabel: UILabel = {
+    private let nameLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 20, weight: .bold)
         return label
     }()
     
-    let symbolLabel: UILabel = {
+    private let symbolLabel: UILabel = {
         let label = UILabel()
         label.font = .systemFont(ofSize: 16, weight: .regular)
         return label
     }()
     
-    let priceLabel: UILabel = {
+    private let priceLabel: UILabel = {
         let label = UILabel()
         label.textColor = .systemGreen
         label.textAlignment = .right
         label.font = .systemFont(ofSize: 16, weight: .regular)
         return label
+    }()
+    
+    private let iconImage: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.backgroundColor = .green
+        return imageView
     }()
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
@@ -44,11 +53,20 @@ class CryptoTableViewCell: UITableViewCell {
         contentView.addSubview(nameLabel)
         contentView.addSubview(symbolLabel)
         contentView.addSubview(priceLabel)
+        contentView.addSubview(iconImage)
         
     }
     
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        iconImage.image = nil
+        nameLabel.text = nil
+        symbolLabel.text = nil
+        priceLabel.text = nil
     }
     
     override func layoutSubviews() {
@@ -58,9 +76,13 @@ class CryptoTableViewCell: UITableViewCell {
         symbolLabel.sizeToFit()
         priceLabel.sizeToFit()
         
-        nameLabel.frame = CGRect(x: 20, y: 0, width: contentView.frame.size.width/2, height: contentView.frame.size.height/2)
+        let size: CGFloat = contentView.frame.size.height/1.1
         
-        symbolLabel.frame = CGRect(x: 20, y: contentView.frame.size.height/2 , width: contentView.frame.size.width/2, height: contentView.frame.size.height/2)
+        iconImage.frame = CGRect(x: 20, y: (contentView.frame.size.height-size)/2, width: size, height: size)
+        
+        nameLabel.frame = CGRect(x: 30 + size, y: 0, width: contentView.frame.size.width/2, height: contentView.frame.size.height/2)
+        
+        symbolLabel.frame = CGRect(x: 30 + size, y: contentView.frame.size.height/2 , width: contentView.frame.size.width/2, height: contentView.frame.size.height/2)
         
         priceLabel.frame = CGRect(x: contentView.frame.size.width/2, y: 0, width: contentView.frame.size.width/2-20, height: contentView.frame.size.height)
         
@@ -70,6 +92,14 @@ class CryptoTableViewCell: UITableViewCell {
         nameLabel.text = viewModel.name
         symbolLabel.text = viewModel.symbol
         priceLabel.text = viewModel.price
+        
+        guard let url = viewModel.iconURL else {
+            return
+        }
+        
+        DispatchQueue.main.async {
+            self.iconImage.af.setImage(withURL: url)
+        }
     }
 
 }

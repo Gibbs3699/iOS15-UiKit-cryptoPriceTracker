@@ -10,6 +10,7 @@
 		DCADC8F5287EC54000C496DD /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = DCADC8F4287EC54000C496DD /* Alamofire */; };
 		DCADC8F7287ECB9800C496DD /* CryptoTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADC8F6287ECB9800C496DD /* CryptoTableViewCell.swift */; };
 		DCADC8F9287F18D800C496DD /* Crypto.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCADC8F8287F18D700C496DD /* Crypto.swift */; };
+		DCADC8FC2884625A00C496DD /* AlamofireImage in Frameworks */ = {isa = PBXBuildFile; productRef = DCADC8FB2884625A00C496DD /* AlamofireImage */; };
 		DCE35CB8287C855100D8D256 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE35CB7287C855100D8D256 /* AppDelegate.swift */; };
 		DCE35CBA287C855100D8D256 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DCE35CB9287C855100D8D256 /* SceneDelegate.swift */; };
 		DCE35CC1287C855400D8D256 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DCE35CC0287C855400D8D256 /* Assets.xcassets */; };
@@ -37,6 +38,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				DCADC8F5287EC54000C496DD /* Alamofire in Frameworks */,
+				DCADC8FC2884625A00C496DD /* AlamofireImage in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -93,6 +95,7 @@
 			name = "Crypto Price Tracker";
 			packageProductDependencies = (
 				DCADC8F4287EC54000C496DD /* Alamofire */,
+				DCADC8FB2884625A00C496DD /* AlamofireImage */,
 			);
 			productName = "Crypto Price Tracker";
 			productReference = DCE35CB4287C855100D8D256 /* Crypto Price Tracker.app */;
@@ -124,6 +127,7 @@
 			mainGroup = DCE35CAB287C855100D8D256;
 			packageReferences = (
 				DCADC8F3287EC54000C496DD /* XCRemoteSwiftPackageReference "Alamofire" */,
+				DCADC8FA2884625A00C496DD /* XCRemoteSwiftPackageReference "AlamofireImage" */,
 			);
 			productRefGroup = DCE35CB5287C855100D8D256 /* Products */;
 			projectDirPath = "";
@@ -376,6 +380,14 @@
 				kind = branch;
 			};
 		};
+		DCADC8FA2884625A00C496DD /* XCRemoteSwiftPackageReference "AlamofireImage" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/Alamofire/AlamofireImage.git";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -383,6 +395,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = DCADC8F3287EC54000C496DD /* XCRemoteSwiftPackageReference "Alamofire" */;
 			productName = Alamofire;
+		};
+		DCADC8FB2884625A00C496DD /* AlamofireImage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = DCADC8FA2884625A00C496DD /* XCRemoteSwiftPackageReference "AlamofireImage" */;
+			productName = AlamofireImage;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

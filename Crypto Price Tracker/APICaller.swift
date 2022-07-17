@@ -16,7 +16,7 @@ final class  APICaller {
     private var whenReadyBlock: ((Result<[Crypto], Error>) -> Void)?
     
     private struct Constant {
-        static let apiKey = "EE5F52E1-8BFA-41D8-91A8-7D6F41044D58"
+        static let apiKey = "D27CF731-133C-4879-877A-C4DC86629E68"
         static let assetsURL = "https://rest.coinapi.io/v1/assets"
         static let iconURL = "https://rest.coinapi.io/v1/assets/icons/55"
     }
@@ -41,11 +41,12 @@ final class  APICaller {
     }
     
     public func getAllIcons() {
-        AF.request(Constant.iconURL + "?apiKey=" + Constant.apiKey).responseDecodable(of: [Icon].self) { [weak self] response in
+        AF.request(Constant.iconURL + "?apiKey=" + Constant.apiKey).responseDecodable(of: [Icon].self) { response in
+            
             switch response.result {
             case .success(let result):
-                self?.icons = result
-                if let completion = self?.whenReadyBlock {
+                self.icons = result
+                if let completion = self.whenReadyBlock {
                     APICaller.shared.getAllCryptoData(completion: completion)
                 }
 
