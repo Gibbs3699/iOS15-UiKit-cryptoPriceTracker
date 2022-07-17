@@ -8,11 +8,19 @@
 import UIKit
 import AlamofireImage
 
-struct CryptoTableViewCellViewModel {
+class CryptoTableViewCellViewModel {
     let name: String
     let symbol: String
     let price: String
     let iconURL: URL?
+    var iconData: URL?
+    
+    init (name: String, symbol: String, price: String, iconURL: URL?) {
+        self.name = name
+        self.symbol = symbol
+        self.price = price
+        self.iconURL = iconURL
+    }
 }
 
 
@@ -93,12 +101,17 @@ class CryptoTableViewCell: UITableViewCell {
         symbolLabel.text = viewModel.symbol
         priceLabel.text = viewModel.price
         
-        guard let url = viewModel.iconURL else {
-            return
-        }
-        
-        DispatchQueue.main.async {
+        if let url = viewModel.iconData {
             self.iconImage.af.setImage(withURL: url)
+            print("-------- cache image --------")
+        }else {
+            if let url = viewModel.iconURL {
+                viewModel.iconData = url
+                DispatchQueue.main.async {
+                    self.iconImage.af.setImage(withURL: url)
+                }
+            }
+            print("-------- loading image --------")
         }
     }
 
